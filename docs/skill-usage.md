@@ -1,4 +1,6 @@
-# Video analysis skill 설치와 사용
+# 영상 분석 skill 설치와 사용
+
+**한국어** | [English](skill-usage_en.md)
 
 skill 소스는 [`skills/video-analysis`](../skills/video-analysis)에 있으며 데모와
 별도로 설치할 수 있습니다. Python CLI를 직접 호출하므로 Spring Boot·React·Docker가
@@ -36,6 +38,9 @@ test ! -e "${CODEX_HOME:-$HOME/.codex}/skills/video-analysis" && \
 
 이 저장소에는 skill 원본만 추가되어 있으며 개인 skill 디렉터리에 자동 설치하지 않습니다.
 
+`SKILL.md`가 한국어 기본 진입점이며 `SKILL_en.md`는 영어 참고판입니다.
+영어판을 별도 skill로 설치할 필요는 없습니다.
+
 ## 3. 로컬 LLM 연결
 
 설치한 로컬 모델 서버의 OpenAI 호환 엔드포인트와 실제 모델 ID를 지정합니다.
@@ -58,6 +63,9 @@ $video-analysis 이 YouTube URL에서 장소와 추천 이유를 근거 시간�
 $video-analysis /절대경로/clip.mp4의 전체 자막을 분석해 제품 사양을 정리해줘
 $video-analysis /절대경로/interview.wav를 의미 분석 없이 전사해줘
 ```
+
+skill 설명은 한국어를 기본으로 하고 영어 요청 시 영어로 제공합니다.
+원문 근거와 타임스탬프는 보존합니다. CLI 출력 언어 전환 옵션이 있다는 뜻은 아닙니다.
 
 Codex 없이 터미널에서도 동일 기능을 실행할 수 있습니다.
 

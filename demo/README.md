@@ -1,22 +1,24 @@
-# MJ Video Intelligence Demo
+# MJ Video Intelligence 데모
 
-The demo makes the library's host boundary visible through a React client,
-Spring Boot job API, and FastAPI analysis adapter. It runs without an external
-model by default.
+**한국어** | [English](README_en.md)
 
-## Run everything
+React 클라이언트, Spring Boot 작업 API, FastAPI 분석 어댑터로 라이브러리와 호스트의
+책임 경계를 보여주는 데모입니다. 기본 설정은 외부 모델 없이 동작합니다.
+
+## 전체 실행
 
 ```bash
 cd demo
 docker compose up --build
 ```
 
-Open <http://localhost:5173>. The API health endpoints are available at
-<http://localhost:8080/actuator/health> and <http://localhost:8000/health>.
+[데모](http://localhost:5173)를 엽니다. 상태 확인 주소는
+[Spring API](http://localhost:8080/actuator/health)와
+[분석 서비스](http://localhost:8000/health)입니다.
 
-## Run services locally
+## 서비스별 로컬 실행
 
-Analysis service:
+분석 서비스:
 
 ```bash
 python3 -m pip install -e . -e './demo/analysis-service[test]'
@@ -39,16 +41,16 @@ npm install
 npm run dev
 ```
 
-## Connect a model gateway
+## 모델 게이트웨이 연결
 
-The web UI also accepts video/audio uploads up to 100 MB. Docker includes ffmpeg
-and faster-whisper; `WHISPER_MODEL` defaults to `tiny` (fast, lower accuracy).
-The first upload containing speech downloads model weights into a persistent
-Docker volume. No-caption YouTube URLs return metadata with an upload prompt.
-Silent uploads return a preview and metadata; OCR/vision analysis is not yet
-implemented. Demo mode only returns rule-based or sampled transcript results.
+웹은 최대 100 MB의 영상·음성 파일을 받습니다. Docker에는 ffmpeg와 faster-whisper가
+포함되며, `WHISPER_MODEL`의 기본값은 `tiny`입니다. 빠르지만 정확도에는 한계가 있습니다.
+첫 음성 업로드 시 모델 가중치를 영속 Docker 볼륨에 내려받습니다.
+자막 없는 YouTube URL은 메타데이터와 업로드 안내를 반환합니다. 무음 파일은 미리보기와
+메타데이터만 반환하며 OCR·비전 분석은 아직 구현되지 않았습니다.
+데모 모드는 규칙 기반 결과 또는 일부 자막 발췌만 반환합니다.
 
-The deterministic demo model is used unless both variables below are set:
+아래 주소와 모델명 두 변수를 모두 지정하지 않으면 결정론적 데모 모델을 사용합니다.
 
 ```bash
 export VIDEO_MODEL_BASE_URL=http://127.0.0.1:3211/v1
@@ -56,9 +58,9 @@ export VIDEO_MODEL_NAME=gemma4:latest
 export VIDEO_MODEL_API_KEY=local-gateway-token
 ```
 
-The endpoint must implement OpenAI-compatible `/chat/completions` responses.
+엔드포인트는 OpenAI 호환 `/chat/completions` 응답을 제공해야 합니다.
 
-## Tests
+## 테스트
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -67,10 +69,9 @@ cd ../api && ./gradlew test
 cd ../web && npm test && npm run build
 ```
 
-The sample uses prepared transcript evidence. Real uploads require a host-owned
-ASR/frame extraction pipeline before invoking the analysis service.
+기본 샘플은 준비된 자막을 사용합니다. 실제 파일에는 호스트가 소유하는 ASR·프레임
+추출 처리가 필요하며, 데모는 업로드 경로에서 음성 전사와 대표 프레임 추출을 제공합니다.
 
-Public YouTube URLs are an exception: the analysis service uses `yt-dlp` to
-collect metadata and available manual or automatic captions without downloading
-the video. Private, age-restricted, region-restricted, or captionless videos may
-require authentication or a separate ASR pipeline and return a clear error.
+공개 YouTube URL은 `yt-dlp`로 메타데이터와 사용 가능한 수동·자동 자막을 수집하며
+영상 파일은 다운로드하지 않습니다. 비공개·연령 제한·지역 제한 영상은 인증이 필요하거나
+수집에 실패할 수 있습니다. 자막 없는 영상의 음성 분석에는 별도 원본 파일이 필요합니다.

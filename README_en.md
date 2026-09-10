@@ -1,14 +1,6 @@
 # mj_video_intelligence
 
-## Codex skill and local CLI
-
-The standalone skill lives in [`skills/video-analysis`](skills/video-analysis).
-It invokes a Python CLI for public captions, local Whisper transcription and
-configured local-model extraction without the demo servers. See the
-[installation and usage guide](docs/skill-usage.md). It is not automatically
-installed into your personal skill directory. OCR/vision is not implemented.
-
-[한국어](README_ko.md) | **English**
+[한국어](README.md) | **English**
 
 Policy-bounded, selective video analysis for local or hosted OpenAI-compatible models.
 
@@ -66,6 +58,25 @@ analyzer = AgenticVideoAnalyzer(
 result = analyzer.analyze(evidence)
 ```
 
+## Codex skill and local CLI
+
+Use `$video-analysis` in the separate [`skills/video-analysis`](skills/video-analysis)
+folder for public YouTube captions, local video/audio Whisper transcription and
+information extraction with a configured local LLM. It runs through the Python
+CLI without Spring Boot or demo servers.
+
+```bash
+python3 -m pip install -e '.[youtube,asr]'
+mj-video doctor
+mj-video analyze --file ./clip.mp4 --objective '자막 전사' \
+  --evidence-only --output ./analysis-output
+```
+
+Semantic analysis requires a local model connection. Captionless URLs return
+metadata only; OCR/vision is not implemented. See the
+[installation and usage guide](docs/skill-usage_en.md). The skill is included in the
+repository but is not automatically installed into your personal environment.
+
 ## Public API
 
 - `VideoBudget`: resource and security limits
@@ -79,13 +90,43 @@ result = analyzer.analyze(evidence)
 
 The host application owns source authorization, video acquisition, ASR, frame decoding, persistence, domain-specific schemas, evidence validation, and user ownership. This package owns only the bounded selection and analysis loop over artifacts supplied by the host.
 
-Detailed architecture, contracts, extension points, and limitations are documented in [`docs/architecture.md`](docs/architecture.md).
+Detailed architecture, contracts, extension points, and limitations are documented in [`docs/architecture_en.md`](docs/architecture_en.md).
 
 ## Test
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+## React + Spring Boot demo
+
+`demo/` contains a runnable React UI, Spring Boot host API and FastAPI analysis
+adapter. The default demo needs no external model; configure environment variables
+to connect an OpenAI-compatible model gateway.
+
+```bash
+cd demo
+docker compose up --build
+```
+
+See the [demo guide](demo/README_en.md) for execution instructions and the
+[demo architecture](docs/demo-architecture_en.md) for boundaries and API contracts.
+
+## Documentation
+
+Korean is the default documentation language. Every document has a language link
+at the top. Default filenames contain Korean and `*_en.md` files contain English.
+`README_ko.md` is a Korean compatibility path with the same content as the default
+README. Update both languages together when changing documentation. Commands,
+API identifiers and original evidence need not be translated.
+
+- [Core architecture](docs/architecture_en.md)
+- [Demo guide](demo/README_en.md)
+- [Demo architecture](docs/demo-architecture_en.md)
+- [Skill installation and usage](docs/skill-usage_en.md)
+- [Skill implementation design](docs/video-analysis-skill-design_en.md)
+- [Skill execution instructions](skills/video-analysis/SKILL_en.md)
+- [Result interpretation](skills/video-analysis/references/result_en.md)
 
 ## Status
 

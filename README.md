@@ -96,6 +96,35 @@ OCR·비전 분석은 아직 지원하지 않습니다. [skill 설치·사용법
 python3 -m unittest discover -s tests -v
 ```
 
+## React + Spring Boot 데모
+
+`demo/`에는 React UI, Spring Boot 호스트 API, FastAPI 분석 어댑터로 구성된
+실행 가능한 샘플이 있습니다. 외부 모델 없이 기본 데모를 실행할 수 있으며,
+환경변수로 OpenAI 호환 모델 게이트웨이를 연결할 수 있습니다.
+
+```bash
+cd demo
+docker compose up --build
+```
+
+자세한 실행법은 [`demo/README.md`](demo/README.md), 책임 경계와 API 계약은
+[`docs/demo-architecture.md`](docs/demo-architecture.md)를 참고하세요.
+
+## 문서
+
+모든 문서는 한국어를 기본으로 제공하며 각 문서 상단에서 영어판으로 전환할 수 있습니다.
+기본 파일은 한국어, `*_en.md`는 영어판입니다. `README_ko.md`는 기본 README와
+같은 내용의 한국어 호환 경로입니다. 문서를 수정할 때 두 언어판을 함께 갱신합니다.
+명령어, API 식별자와 원문 근거는 번역하지 않아도 됩니다.
+
+- [핵심 아키텍처](docs/architecture.md)
+- [데모 실행 안내](demo/README.md)
+- [데모 아키텍처](docs/demo-architecture.md)
+- [skill 설치·사용법](docs/skill-usage.md)
+- [skill 구현 설계](docs/video-analysis-skill-design.md)
+- [skill 실행 지침](skills/video-analysis/SKILL.md)
+- [결과 해석](skills/video-analysis/references/result.md)
+
 ## 현재 상태
 
 버전 `0.1.0`은 알파 API입니다. 첫 안정 버전 이후 프로토콜이나 근거 데이터 형식의 호환성을 깨는 변경에는 주 버전 번호를 올립니다.

@@ -1,19 +1,22 @@
-# Result interpretation
+# 결과 해석
 
-- `completed` means the requested runtime path completed, not that all facts in
-  the video were discovered or verified.
-- `needs_input` with `NEEDS_MEDIA` means no usable transcript is available.
-  Show source metadata and request a local media file; a silent upload needs a
-  different evidence source, since OCR/vision is not implemented.
-- `failed` has an error and must not be reported as successful analysis.
-- `execution.analysisMode=evidence-only` is transcription/collection, not
-  semantic extraction. `transcript` contains the collected segments.
-- `coverage.complete=true` in `full-transcript` means every collected transcript
-  chunk was submitted, not that every visual/audio detail is represented.
-- `selective` uses bounded agent search. Do not describe it as exhaustive.
-- Finding evidence must match an original segment's start, end and text. This
-  checks provenance, not semantic entailment or transcription accuracy.
+**한국어** | [English](result_en.md)
 
-`result.json` is the authoritative structured result; `report.md` is a concise
-rendering. A skill may create a better report from that JSON, but should preserve
-coverage, uncertainty, source identity and quoted evidence.
+- `completed`는 요청한 실행 경로가 완료됐다는 뜻이며, 영상의 모든 사실을
+  발견하거나 검증했다는 뜻은 아니다.
+- `needs_input`과 `NEEDS_MEDIA`는 사용 가능한 자막이 없다는 뜻이다.
+  소스 메타데이터를 보여주고 로컬 미디어 파일을 요청한다. 무음 업로드는
+  OCR·비전이 구현되지 않았으므로 다른 근거 소스가 필요하다.
+- `failed`에는 오류가 있으며 분석 성공으로 설명하지 않는다.
+- `execution.analysisMode=evidence-only`는 전사·수집이며 의미 추출이 아니다.
+  `transcript`에 수집된 구간이 들어 있다.
+- `full-transcript`의 `coverage.complete=true`는 수집된 모든 자막 청크를
+  제출했다는 뜻이며 모든 시각·음성 세부 정보가 포함됐다는 뜻은 아니다.
+- `selective`는 제한된 에이전트 검색을 사용한다. 전체 분석으로 설명하지 않는다.
+- 결과의 근거는 원본 구간의 시작·끝·텍스트와 일치해야 한다.
+  이는 출처 검증이며 의미적 뒷받침이나 전사 정확성을 검증하는 것은 아니다.
+
+`result.json`이 구조화된 기준 결과이며 `report.md`는 간단한 표현이다.
+skill은 JSON으로 더 나은 보고서를 만들 수 있지만 수행 범위, 불확실성,
+소스 식별 정보와 인용 근거를 보존해야 한다. 설명은 한국어를 기본으로 하고
+사용자가 영어를 요청하면 영어로 제공하되 원문 근거는 그대로 유지한다.
