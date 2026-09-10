@@ -1,0 +1,38 @@
+services:
+  analysis-service:
+    build:
+      context: ..
+      dockerfile: demo/analysis-service/Dockerfile
+    environment:
+      VIDEO_MODEL_BASE_URL: ${VIDEO_MODEL_BASE_URL:-}
+      VIDEO_MODEL_NAME: ${VIDEO_MODEL_NAME:-}
+      VIDEO_MODEL_API_KEY: ${VIDEO_MODEL_API_KEY:-local}
+      WHISPER_MODEL: ${WHISPER_MODEL:-tiny}
+      HF_HOME: /models
+    volumes:
+      - asr-models:/models
+    ports:
+      - "8000:8000"
+
+  api:
+    build:
+      context: ..
+      dockerfile: demo/api/Dockerfile
+    environment:
+      ANALYSIS_SERVICE_BASE_URL: http://analysis-service:8000
+    depends_on:
+      - analysis-service
+    ports:
+      - "8080:8080"
+
+  web:
+    build:
+      context: ..
+      dockerfile: demo/web/Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "5173:80"
+
+volumes:
+  asr-models:

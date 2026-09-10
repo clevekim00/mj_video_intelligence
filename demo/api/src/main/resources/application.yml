@@ -1,0 +1,18 @@
+server:
+  port: ${SERVER_PORT:8080}
+  tomcat:
+    max-swallow-size: 100MB
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+analysis-service:
+  base-url: ${ANALYSIS_SERVICE_BASE_URL:http://localhost:8000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

@@ -79,6 +79,20 @@ result = analyzer.analyze(evidence)
 python3 -m unittest discover -s tests -v
 ```
 
+## React + Spring Boot 데모
+
+`demo/`에는 React UI, Spring Boot 호스트 API, FastAPI 분석 어댑터로 구성된
+실행 가능한 샘플이 있습니다. 외부 모델 없이 기본 데모를 실행할 수 있으며,
+환경변수로 OpenAI 호환 모델 게이트웨이를 연결할 수 있습니다.
+
+```bash
+cd demo
+docker compose up --build
+```
+
+자세한 실행법은 [`demo/README.md`](demo/README.md), 책임 경계와 API 계약은
+[`docs/demo-architecture.md`](docs/demo-architecture.md)를 참고하세요.
+
 ## 현재 상태
 
 버전 `0.1.0`은 알파 API입니다. 첫 안정 버전 이후 프로토콜이나 근거 데이터 형식의 호환성을 깨는 변경에는 주 버전 번호를 올립니다.

@@ -4,6 +4,16 @@ build/
 dist/
 *.egg-info/
 __pycache__/
-*.pyc
+*.py[cod]
 .pytest_cache/
 .coverage
+demo/web/node_modules/
+demo/web/dist/
+demo/api/.gradle/
+demo/api/build/
+demo/api/target/
+demo/web/*.tsbuildinfo
+demo/web/vite.config.js
+demo/web/vite.config.d.ts
+graphify-out/
+.idea/

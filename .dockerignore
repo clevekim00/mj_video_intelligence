@@ -1,0 +1,10 @@
+.git
+.venv
+**/.gradle
+**/build
+**/dist
+**/node_modules
+**/target
+**/__pycache__
+**/*.pyc
+graphify-out
