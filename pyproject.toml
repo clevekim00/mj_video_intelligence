@@ -22,3 +22,10 @@ classifiers = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["mj_video_intelligence*"]
+
+[project.optional-dependencies]
+youtube = ["yt-dlp>=2026.8.12,<2027"]
+asr = ["faster-whisper>=1.2,<2"]
+
+[project.scripts]
+mj-video = "mj_video_intelligence.runtime.cli:main"
