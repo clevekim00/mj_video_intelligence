@@ -58,6 +58,23 @@ analyzer = AgenticVideoAnalyzer(
 result = analyzer.analyze(evidence)
 ```
 
+## Codex skill 및 로컬 CLI
+
+별도 폴더 [`skills/video-analysis`](skills/video-analysis)의 `$video-analysis`로
+YouTube 자막 수집, 로컬 영상·음성 Whisper 전사, 로컬 LLM 기반 정보 추출을 사용할 수
+있습니다. Spring Boot나 데모 서버 없이 Python CLI로 실행합니다.
+
+```bash
+python3 -m pip install -e '.[youtube,asr]'
+mj-video doctor
+mj-video analyze --file ./clip.mp4 --objective '자막 전사' \
+  --evidence-only --output ./analysis-output
+```
+
+의미 분석에는 로컬 모델 연결이 필요합니다. 자막 없는 URL은 메타데이터만 반환하며
+OCR·비전 분석은 아직 지원하지 않습니다. [skill 설치·사용법](docs/skill-usage.md)을
+참고하세요. skill은 저장소에 포함되어 있으며 개인 환경에 자동 설치되지 않습니다.
+
 ## 공개 API
 
 - `VideoBudget`: 자원 사용량과 보안 한계 설정

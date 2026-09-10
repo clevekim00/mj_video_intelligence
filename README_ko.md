@@ -1,5 +1,11 @@
 # mj_video_intelligence
 
+## Codex skill
+
+`skills/video-analysis/`에 별도 skill이 포함되어 있습니다. Python CLI로 공개 자막,
+로컬 Whisper 전사, 설정된 로컬 LLM 분석을 실행합니다. [설치 및 사용법](docs/skill-usage.md)을
+참고하세요. 개인 환경에 자동 설치되지는 않습니다.
+
 **한국어** | [English](README_en.md)
 
 로컬 또는 호스팅 환경의 OpenAI 호환 모델을 위한 정책 제한형 선택적 영상 분석 패키지입니다.

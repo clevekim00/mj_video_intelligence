@@ -1,5 +1,13 @@
 # mj_video_intelligence
 
+## Codex skill and local CLI
+
+The standalone skill lives in [`skills/video-analysis`](skills/video-analysis).
+It invokes a Python CLI for public captions, local Whisper transcription and
+configured local-model extraction without the demo servers. See the
+[installation and usage guide](docs/skill-usage.md). It is not automatically
+installed into your personal skill directory. OCR/vision is not implemented.
+
 [한국어](README_ko.md) | **English**
 
 Policy-bounded, selective video analysis for local or hosted OpenAI-compatible models.
