@@ -118,6 +118,7 @@ docker compose up --build
 명령어, API 식별자와 원문 근거는 번역하지 않아도 됩니다.
 
 - [핵심 아키텍처](docs/architecture.md)
+- [그림으로 배우는 사용법 (HTML)](docs/usage-eli5.html)
 - [데모 실행 안내](demo/README.md)
 - [데모 아키텍처](docs/demo-architecture.md)
 - [skill 설치·사용법](docs/skill-usage.md)
