@@ -121,7 +121,7 @@ README. Update both languages together when changing documentation. Commands,
 API identifiers and original evidence need not be translated.
 
 - [Core architecture](docs/architecture_en.md)
-- [Visual getting-started guide (HTML)](docs/usage-eli5_en.html)
+- [Visual getting-started guide (web page)](https://clevekim00.github.io/mj_video_intelligence/usage-eli5_en.html)
 - [Demo guide](demo/README_en.md)
 - [Demo architecture](docs/demo-architecture_en.md)
 - [Skill installation and usage](docs/skill-usage_en.md)
